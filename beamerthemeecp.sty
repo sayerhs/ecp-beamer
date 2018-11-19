@@ -1,0 +1,163 @@
+% ECP Beamer Style Class
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{lmodern}
+\RequirePackage{helvet}
+\RequirePackage{tikz}
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{amssymb}
+\RequirePackage{mathtools}
+
+
+\mode<presentation>
+\useinnertheme{default}
+\useoutertheme{default}
+\usecolortheme{default}
+\usefonttheme{professionalfonts}
+
+\definecolor{ecp@black}{gray}{0.3}
+\definecolor{ecp@blue}{HTML}{1B4F72}
+\definecolor{ecp@lightblue}{HTML}{2FABF9}
+\definecolor{ecp@lightred}{HTML}{F9322F}
+\setbeamercolor{structure}{fg=ecp@black}
+\setbeamercolor{normal text}{fg=ecp@black}
+
+\setbeamerfont{title}{size=\Large,series=\bfseries,parent=structure}
+\setbeamerfont{frametitle}{size=\Large,series=\bfseries,parent=structure}
+\setbeamerfont{section}{size=\Large,series=\bfseries,parent=structure}
+\setbeamerfont{author}{series=\bfseries,parent=structure}
+
+\newcommand{\ecptitlebg}[1]{
+  \begin{tikzpicture}
+    \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+    \node[inner sep=0pt,anchor=south west](ECP logo) at (-10pt,0.8\paperheight)
+    {\includegraphics[width=0.2\textwidth]{ecp_theme/ecp_logo_main}};
+    \node[inner sep=0pt](ECP design) at (0,0.6\paperheight)
+    {\includegraphics[height=0.9\textheight]{ecp_theme/ecp_bg_left}};
+    \fill[color=ecp@blue] (-0.2\paperwidth,0) rectangle (\the\paperwidth,0.1\paperheight);
+    \node[inner sep=0pt,anchor=south west](NNSA logo) at (0.75\paperwidth,4pt)
+    {\includegraphics[height=0.07\textheight]{ecp_theme/doe_nnsa}};
+    \node[inner sep=0pt,anchor=south east](DOE SC logo) at (0.74\paperwidth,4pt)
+    {\includegraphics[height=0.07\textheight]{ecp_theme/doe_sc}};
+    \node[anchor=south west,color=white,font=\bf] at (0,4pt) {exascaleproject.org};
+    {#1}
+  \end{tikzpicture}
+}
+
+\defbeamertemplate*{title page}{ecp}[1][]
+{
+  \ecptitlebg{
+    \node[anchor=north west](title) at (0.3\textwidth,0.85\paperheight)
+    {
+      \begin{beamercolorbox}[wd=0.6\textwidth,#1]{title page header}
+        \usebeamerfont{title}\inserttitle%
+      \end{beamercolorbox}%
+    };
+    \node[anchor=north west](author) at (0.3\textwidth,0.7\paperheight)
+    {
+      \begin{beamercolorbox}[wd=0.6\textwidth,#1]{author}
+        \usebeamerfont{author}\insertauthor\\%
+      \end{beamercolorbox}%
+    };
+    \node[anchor=north west](author) at (0.3\textwidth,0.5\paperheight)
+    {
+      \begin{beamercolorbox}[wd=0.6\textwidth,#1]{instutute}
+        \usebeamerfont{institute}\insertinstitute \\%
+      \end{beamercolorbox}%
+    };
+    \node[anchor=north west](institute) at (0.3\textwidth,0.3\paperheight)
+    {
+      \begin{beamercolorbox}[wd=0.6\textwidth,#1]{date}
+        \usebeamerfont{date}\insertdate%
+      \end{beamercolorbox}%
+    };
+  }
+}
+
+\defbeamertemplate*{section page}{ecp}[1][]
+{
+  \begin{tikzpicture}
+    \node[anchor=north west](title) at (0,0.9\paperheight)
+    {
+      \begin{beamercolorbox}[wd=0.6\textwidth,#1]{section page header}
+        \usebeamerfont{section}\insertsection%
+      \end{beamercolorbox}%
+    };
+    \node[anchor=north west](logo) at (0.6\textwidth,0.4\paperheight)
+    {\includegraphics[width=0.3\textwidth]{ecp_theme/ecp_logo_main}};
+  \end{tikzpicture}
+}
+
+\AtBeginSection{%
+  {%
+    \setbeamertemplate{background}[default]%
+    \frame[plain]{\sectionpage}
+  }
+}
+
+\defbeamertemplate*{background}{ecp}
+{
+  \begin{tikzpicture}
+    \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+    \node[anchor=south west](frame number) at (0,0)
+    {
+      \begin{beamercolorbox}{footline}
+        \usebeamerfont{footline}\insertframenumber
+      \end{beamercolorbox}
+    };
+    \node[anchor=south east] at (0.98\paperwidth,0)
+    {\includegraphics[height=0.07\textheight]{ecp_theme/ecp_logo_bottom}};
+    \node[anchor=north east] at (1.01\paperwidth,\paperheight)
+    {\includegraphics[height=0.6\textheight]{ecp_theme/ecp_bg_right}};
+  \end{tikzpicture}
+}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamertemplate{enumerate item}[default]
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{itemize subitem}{--}
+\setbeamertemplate{itemize subsubitem}{-}
+\setbeamersize{text margin left=1em,text margin right=1em}
+
+\renewcommand{\maketitle}{
+  {%
+    \setbeamertemplate{background}[default]
+    \frame[plain]{\titlepage}
+  }%
+}
+
+\newcommand{\ecpacknowledge}[1]{
+  \setbeamertemplate{background}[default]
+  \frame[plain]{
+  \ecptitlebg{
+    \node[anchor=north west](title) at (0.3\textwidth,0.85\paperheight)
+    {
+      \begin{beamercolorbox}[wd=0.6\textwidth]{ack page header}
+        \usebeamerfont{section} Acknowledgements%
+      \end{beamercolorbox}%
+    };
+    \node[anchor=north west](ack text) at (0.3\textwidth,0.75\paperheight)
+    {
+      \begin{beamercolorbox}[wd=0.6\textwidth]{acknowledgements}
+        \usebeamerfont{tiny structure}
+        This research was supported by the Exascale Computing Project
+        (17-SC-20-SC), a joint project of the U.S. Department of Energy’s Office
+        of Science and National Nuclear Security Administration, responsible for
+        delivering a capable exascale ecosystem, including software,
+        applications, and hardware technology, to support
+        the nation’s exascale computing imperative. \vspace{2em}\\
+
+        This work was authored in part by the National Renewable Energy
+        Laboratory, operated by Alliance for Sustainable Energy, LLC, for the
+        U.S. Department of Energy (DOE) under Contract No. DE-AC36-08GO28308. #1
+        \vspace{2em}\\
+        {#1}
+      \end{beamercolorbox}%
+    };
+  }}
+}
+
+\mode<all>
