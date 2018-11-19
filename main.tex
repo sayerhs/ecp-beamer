@@ -2,28 +2,28 @@
 
 \usetheme{ecp}
 
-% \usetikzlibrary{external}
-% \tikzexternalize[prefix=tikzout/]
+\usetikzlibrary{external}
+\tikzexternalize[prefix=tikzout/]
 
-% % % Fix tikz external to work with fmt files
-% % \tikzset{%
-% %   external/system call={%
-% % pdflatex \tikzexternalcheckshellescape -halt-on-error %
-% % -interaction=batchmode -fmt main -jobname "\image" "\texsource"}}
+% % Fix tikz external to work with fmt files
+% \tikzset{%
+%   external/system call={%
+% pdflatex \tikzexternalcheckshellescape -halt-on-error %
+% -interaction=batchmode -fmt main -jobname "\image" "\texsource"}}
 
-% % Integrate tikz with beamer overlay capability
-% \tikzset{
-%   invisible/.style={opacity=0},
-%   visible on/.style={alt={#1{}{invisible}}},
-%   alt/.code args={<#1>#2#3}{%
-%     \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
-%   },
-% }
+% Integrate tikz with beamer overlay capability
+\tikzset{
+  invisible/.style={opacity=0},
+  visible on/.style={alt={#1{}{invisible}}},
+  alt/.code args={<#1>#2#3}{%
+    \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
+  },
+}
 
-% % Command to include tikz files where it can use a compiled PDF file if necessary
-% \newcommand{\includetikz}[1]{%
-%   \tikzsetnextfilename{#1}
-%   \input{tikz/#1}}
+% Command to include tikz files where it can use a compiled PDF file if necessary
+\newcommand{\includetikz}[1]{%
+  \tikzsetnextfilename{#1}
+  \input{tikz/#1}}
 
 
 \title{ExaWind Presentation}
