@@ -12,7 +12,7 @@
 
 
 \mode<presentation>
-\useinnertheme{default}
+\useinnertheme{rounded}
 \useoutertheme{default}
 \usecolortheme{default}
 \usefonttheme{professionalfonts}
@@ -21,8 +21,14 @@
 \definecolor{ecp@blue}{HTML}{1B4F72}
 \definecolor{ecp@lightblue}{HTML}{2FABF9}
 \definecolor{ecp@lightred}{HTML}{F9322F}
+\definecolor{ecp@gray50}{gray}{0.5}
+\definecolor{ecp@gray80}{gray}{0.8}
+
+
 \setbeamercolor{structure}{fg=ecp@black}
 \setbeamercolor{normal text}{fg=ecp@black}
+\setbeamercolor{block title}{use=structure,fg=white,bg=ecp@gray50}
+\setbeamercolor{block body}{use=structure,fg=black,bg=ecp@gray80}
 
 \setbeamerfont{title}{size=\Large,series=\bfseries,parent=structure}
 \setbeamerfont{frametitle}{size=\Large,series=\bfseries,parent=structure}
