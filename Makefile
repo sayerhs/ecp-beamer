@@ -10,4 +10,4 @@ default:
 	$(LATEX_EXE) $(LATEX_ARGS) $(JOBNAME)
 
 clean:
-	rm -f $(JOBNAME).pdf $(JOBNAME).dvi *.aux *.nav *.log *.lof *.lot *.bbl *.blg *.out
+	rm -f $(JOBNAME).pdf $(JOBNAME).dvi *.aux *.nav *.log *.lof *.lot *.bbl *.blg *.out tikzout/*
