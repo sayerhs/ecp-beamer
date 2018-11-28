@@ -55,6 +55,7 @@
 
 \defbeamertemplate*{title page}{ecp}[1][]
 {
+  \tikzsetnextfilename{ecp_titleslide}
   \ecptitlebg{
     \node[anchor=north west](title) at (0.3\textwidth,0.85\paperheight)
     {
@@ -104,16 +105,22 @@
   }
 }
 
+\defbeamertemplate*{footline}{ecp}
+{
+  \leavevmode%
+  \hbox{
+    \begin{beamercolorbox}[ht=3ex,dp=1ex,left]{footline}
+      \usebeamerfont{footline}\hspace*{2ex}\strut\insertframenumber\strut
+    \end{beamercolorbox}
+  }
+  \vskip1ex\relax
+}
+
 \defbeamertemplate*{background}{ecp}
 {
+  \tikzsetnextfilename{ecp_background}
   \begin{tikzpicture}
     \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
-    \node[anchor=south west](frame number) at (0,0)
-    {
-      \begin{beamercolorbox}{footline}
-        \usebeamerfont{footline}\insertframenumber
-      \end{beamercolorbox}
-    };
     \node[anchor=south east] at (0.98\paperwidth,0)
     {\includegraphics[height=0.07\textheight]{ecp_theme/ecp_logo_bottom}};
     \node[anchor=north east] at (1.01\paperwidth,\paperheight)
@@ -127,6 +134,8 @@
 \setbeamertemplate{itemize items}[circle]
 \setbeamertemplate{itemize subitem}{--}
 \setbeamertemplate{itemize subsubitem}{-}
+
+\setbeamertemplate{itemize/enumerate subbody end}{\vspace{1ex}}
 \setbeamersize{text margin left=1em,text margin right=1em}
 
 \renewcommand{\maketitle}{
@@ -139,6 +148,7 @@
 \newcommand{\ecpacknowledge}[1]{
   \setbeamertemplate{background}[default]
   \frame[plain]{
+  \tikzsetnextfilename{ecp_acknowledgements}
   \ecptitlebg{
     \node[anchor=north west](title) at (0.3\textwidth,0.85\paperheight)
     {
