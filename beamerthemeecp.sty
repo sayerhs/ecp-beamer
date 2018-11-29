@@ -87,9 +87,10 @@
 \defbeamertemplate*{section page}{ecp}[1][]
 {
   \begin{tikzpicture}
-    \node[anchor=north west](title) at (0,0.9\paperheight)
+    \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+    \node[anchor=north west](title) at (2em,0.8\paperheight)
     {
-      \begin{beamercolorbox}[wd=0.6\textwidth,#1]{section page header}
+      \begin{beamercolorbox}[wd=\textwidth,#1]{section page header}
         \usebeamerfont{section}\insertsection%
       \end{beamercolorbox}%
     };
@@ -123,7 +124,7 @@
     \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
     \node[anchor=south east] at (0.98\paperwidth,0)
     {\includegraphics[height=0.07\textheight]{ecp_theme/ecp_logo_bottom}};
-    \node[anchor=north east] at (1.01\paperwidth,\paperheight)
+    \node[anchor=north east,opacity=0.5] at (1.01\paperwidth,\paperheight)
     {\includegraphics[height=0.6\textheight]{ecp_theme/ecp_bg_right}};
   \end{tikzpicture}
 }
